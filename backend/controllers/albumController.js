@@ -54,9 +54,22 @@ const getAlbumByArtist = asyncHandler(async (req, res) => {
     res.send(artistList)
 })
 
+// get artists count
+const getAlbumCount = asyncHandler(async (req, res) => {
+    const albumCount = await Album.countDocuments({})
+
+    if (!albumCount) {
+        res.status(500).json({ success: false })
+    }
+    res.send({
+        albumCount: albumCount
+    });
+})
+
 export {
     addAlbum,
     getAlbums,
     getAlbumById,
-    getAlbumByArtist
+    getAlbumByArtist,
+    getAlbumCount
 }

@@ -4,7 +4,7 @@ import {
     getSongs,
     getNewSongs,
     getSongById,
-    GetSongCount,
+    getSongCount,
     getIsFeaturedSong,
     getSongByAlbum,
     getSongByArtist,
@@ -24,6 +24,6 @@ router.route('/featuredsongs/:count').get(getIsFeaturedSong)
 router.route('/get/song-by-album/:album').get(getSongByAlbum)
 router.route('/get/song-by-artist/:artist').get(getSongByArtist)
 router.route('/searchsongs/:key').get(searchSongsQuery)
-router.route('/count').get(GetSongCount)
+router.route('/get/count').get(getSongCount)
 
 export default router

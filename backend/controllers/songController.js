@@ -139,6 +139,18 @@ const searchSongsQuery = asyncHandler(async (req, res) => {
     res.send(data);
 })
 
+// get songs count
+const getSongCount = asyncHandler(async (req, res) => {
+    const songCount = await Song.countDocuments({})
+
+    if (!songCount) {
+        res.status(500).json({ success: false })
+    }
+    res.send({
+        songCount: songCount
+    });
+})
+
 export {
     addSong,
     getSongs,
@@ -148,5 +160,6 @@ export {
     getIsFeaturedSong,
     getSongByArtist,
     getSongByAlbum,
-    searchSongsQuery
+    searchSongsQuery,
+    getSongCount
 }

@@ -36,8 +36,21 @@ const getArtistById = asyncHandler(async (req, res) => {
     res.status(200).send(alrtist)
 })
 
+// get artists count
+const getArtistCount = asyncHandler(async (req, res) => {
+    const artistCount = await Artist.countDocuments({})
+
+    if (!artistCount) {
+        res.status(500).json({ success: false })
+    }
+    res.send({
+        artistCount: artistCount
+    });
+})
+
 export {
     addArtist,
     getArtists,
-    getArtistById
+    getArtistById,
+    getArtistCount
 }
