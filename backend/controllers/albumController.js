@@ -4,13 +4,9 @@ import Artist from '../models/artistModel.js';
 
 // add a new album
 const addAlbum = asyncHandler(async (req, res) => {
-    const artist = await Artist.findById(req.body.artist);
-    if (!artist) return res.status(400).send('Invalid Artist');
-
     let album = new Album({
         name: req.body.name,
         image: req.body.image,
-        // artist: req.body.artist,
     });
     album = await album.save();
 
